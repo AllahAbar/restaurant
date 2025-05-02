@@ -30,6 +30,9 @@ import DTO.TransactionDTO;
 import DTO.OrderDTO;
 import DTO.OrderItemDTO;
 
+import editTable.TableStyleUtil;
+import editTable.editPaneTab;
+import editTable.editButton;
 
 import java.awt.HeadlessException;
 import java.awt.Image;
@@ -101,45 +104,58 @@ public class ManagerMainForm extends javax.swing.JFrame {
     public ManagerMainForm() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        customizeTabbedPane();
         
-        managerTablePane.setUI(new BasicTabbedPaneUI() {
-        @Override
-        protected Insets getTabInsets(int tabPlacement, int tabIndex) {
-            // Lề bên trong của từng tab: tạo tab to và cách ra rõ ràng
-            return new Insets(10, 20, 10, 20); // top, left, bottom, right
-        }
+        //////TabbedPane Edit
+////////////////////////////////////////
+        editPaneTab.applyCustomStyle(managerTablePane);
+        editPaneTab.customizeTabbedPane(managerTablePane);
 
-        @Override
-        protected int calculateTabWidth(int tabPlacement, int tabIndex, FontMetrics metrics) {
-            // Tăng chiều rộng tab
-            return super.calculateTabWidth(tabPlacement, tabIndex, metrics) + 10;
-        }
-
-        @Override
-        protected void installDefaults() {
-            super.installDefaults();
-            tabAreaInsets = new Insets(5, 10, 5, 10); // lề vùng chứa tab
-        }
-
-        @Override
-        protected void paintTabBackground(Graphics g, int tabPlacement, int tabIndex,
-                                          int x, int y, int w, int h, boolean isSelected) {
-            g.setColor(isSelected ? new Color(180, 205, 230) : new Color(220, 220, 220));
-            g.fillRoundRect(x, y + 2, w, h - 4, 10, 10);
-        }
-
-        @Override
-        protected void paintFocusIndicator(Graphics g, int tabPlacement, Rectangle[] rects,
-                                           int tabIndex, Rectangle iconRect, Rectangle textRect, boolean isSelected) {
-            // Không vẽ viền focus
-        }
-    });
-
-        /////////comboBox
-        // Xóa tất cả các item hiện có trong combobox
+               
+        //////Table Edit
+////////////////////////////////////////
+        TableStyleUtil.applyTableStyle(customerTable);
+        TableStyleUtil.applyTableStyle(accountTable);
+        TableStyleUtil.applyTableStyle(staffTable);
+        TableStyleUtil.applyTableStyle(tableTop_Table);
+        TableStyleUtil.applyTableStyle(categoryTable);
+        TableStyleUtil.applyTableStyle(itemTable);
+        TableStyleUtil.applyTableStyle(transactionTable);
+        TableStyleUtil.applyTableStyle(orderTable);
         
-     
+        
+        //////DELETE Button Edit
+        ////////////////////////////////////////
+        editButton.styleAsDelete(deleteCustomerButton);
+        editButton.styleAsDelete(deleteAccountButton);
+        editButton.styleAsDelete(deleteButton);
+        editButton.styleAsDelete(deleteTableButton);
+        editButton.styleAsDelete(deleteCategoryButton);
+        editButton.styleAsDelete(deleteItemButton);
+        editButton.styleAsDelete(deleteTransactionButton);
+        editButton.styleAsDelete(deleteOrderButton);
+        
+        
+        //////ADD Button Edit
+        ////////////////////////////////////////
+        editButton.styleAsPrimary(addCustomerButton);
+        editButton.styleAsPrimary(addAccountButton);
+        editButton.styleAsPrimary(addStaffButton);
+        editButton.styleAsPrimary(addTableButton);
+        editButton.styleAsPrimary(addCategoryButton);
+        editButton.styleAsPrimary(addItemButton);
+        editButton.styleAsPrimary(addTransactionButton);
+        editButton.styleAsPrimary(addOrderButton);
+        
+        //////UPDATE Button Edit
+        ////////////////////////////////////////
+        editButton.styleAsSecondary(updateCustomerButton);
+        editButton.styleAsSecondary(updateAccountButton);
+        editButton.styleAsSecondary(updateButton);
+        editButton.styleAsSecondary(updateTableButton);
+        editButton.styleAsSecondary(updateCategoryButton);
+        editButton.styleAsSecondary(updateItemButton);
+        editButton.styleAsSecondary(submitPaymentOrderButton);
+        
         //Table Staff
         staffBLL = new StaffBLL();
         staffTableModel = new DefaultTableModel(){
@@ -181,7 +197,7 @@ public class ManagerMainForm extends javax.swing.JFrame {
                 return false;
             }
         };
-        customerTabel.setModel(customerTableModel);
+        customerTable.setModel(customerTableModel);
         customerTableModel.addColumn("Customer ID");
         customerTableModel.addColumn("First Name");
         customerTableModel.addColumn("Last Name");
@@ -747,7 +763,7 @@ public class ManagerMainForm extends javax.swing.JFrame {
         managerTablePane = new javax.swing.JTabbedPane();
         customerPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        customerTabel = new javax.swing.JTable();
+        customerTable = new javax.swing.JTable();
         refreshCustomerButton = new javax.swing.JButton();
         addCustomerButton = new javax.swing.JButton();
         deleteCustomerButton = new javax.swing.JButton();
@@ -2429,7 +2445,7 @@ public class ManagerMainForm extends javax.swing.JFrame {
 
         managerTablePane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        customerTabel.setModel(new javax.swing.table.DefaultTableModel(
+        customerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -2440,7 +2456,7 @@ public class ManagerMainForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(customerTabel);
+        jScrollPane3.setViewportView(customerTable);
 
         refreshCustomerButton.setText("Tải lại");
         refreshCustomerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -2637,10 +2653,10 @@ public class ManagerMainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE))
             .addGroup(staffPanelLayout.createSequentialGroup()
-                .addComponent(addStaffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(addStaffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2717,15 +2733,15 @@ public class ManagerMainForm extends javax.swing.JFrame {
             tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tablePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(updateTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(updateTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(deleteTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(jScrollPane4)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
         );
         tablePanelLayout.setVerticalGroup(
             tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3170,11 +3186,11 @@ public class ManagerMainForm extends javax.swing.JFrame {
 
     private void updateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonActionPerformed
         // TODO add your handling code here:
-        int row = customerTabel.getSelectedRow();
+        int row = customerTable.getSelectedRow();
         if(row == -1){
             JOptionPane.showMessageDialog(ManagerMainForm.this,"Vui long chon", "loi", JOptionPane.ERROR_MESSAGE);
         } else{
-            int customerID = Integer.parseInt(String.valueOf(customerTabel.getValueAt(row, 0)));
+            int customerID = Integer.parseInt(String.valueOf(customerTable.getValueAt(row, 0)));
             
             customer = customerBLL.getCustomerById(customerID);
             
@@ -3189,14 +3205,14 @@ public class ManagerMainForm extends javax.swing.JFrame {
 
     private void deleteCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCustomerButtonActionPerformed
         // TODO add your handling code here:
-        int row = customerTabel.getSelectedRow();
+        int row = customerTable.getSelectedRow();
         if(row == -1){
             JOptionPane.showMessageDialog(ManagerMainForm.this, "Vui long chon truoc", "Loi", JOptionPane.ERROR_MESSAGE);
         }
         else{
             int confirm = JOptionPane.showConfirmDialog(ManagerMainForm.this, "Ban co chac chan muon xoa khong?");
             if(confirm==JOptionPane.YES_OPTION){
-                int customerID = Integer.parseInt(String.valueOf(customerTabel.getValueAt(row, 0)));
+                int customerID = Integer.parseInt(String.valueOf(customerTable.getValueAt(row, 0)));
                 customerBLL.deleteCustomer(customerID);
 
                 customerTableModel.setRowCount(0);
@@ -4517,7 +4533,7 @@ public class ManagerMainForm extends javax.swing.JFrame {
     private javax.swing.JTextField contentTransactionTextField;
     private javax.swing.JTextField customerIDTableTextField;
     private javax.swing.JPanel customerPanel;
-    private javax.swing.JTable customerTabel;
+    private javax.swing.JTable customerTable;
     private javax.swing.JButton deleteAccountButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton deleteCategoryButton;
