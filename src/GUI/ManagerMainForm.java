@@ -712,7 +712,6 @@ public class ManagerMainForm extends javax.swing.JFrame {
         nameLabel8 = new javax.swing.JLabel();
         CustomerIDTextfield = new javax.swing.JTextField();
         salaryLabel9 = new javax.swing.JLabel();
-        typeTransactionTextField = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         nameLabel9 = new javax.swing.JLabel();
@@ -722,6 +721,8 @@ public class ManagerMainForm extends javax.swing.JFrame {
         PaidRadioButton = new javax.swing.JRadioButton();
         PendingRadioButton = new javax.swing.JRadioButton();
         transactionSpinner = new javax.swing.JSpinner();
+        CardRadioButton = new javax.swing.JRadioButton();
+        CashRadioButton = new javax.swing.JRadioButton();
         TransactionbuttonGroup = new javax.swing.ButtonGroup();
         addOrderDialog = new javax.swing.JDialog();
         tilteLabel13 = new javax.swing.JLabel();
@@ -742,6 +743,7 @@ public class ManagerMainForm extends javax.swing.JFrame {
         addProductForOrderTable = new javax.swing.JTable();
         submitOrderItemButton = new javax.swing.JButton();
         tablebuttonGroup = new javax.swing.ButtonGroup();
+        CardorCashbuttonGroup = new javax.swing.ButtonGroup();
         managerTablePane = new javax.swing.JTabbedPane();
         customerPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -2149,12 +2151,6 @@ public class ManagerMainForm extends javax.swing.JFrame {
 
         salaryLabel9.setText("Loại thanh toán");
 
-        typeTransactionTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                typeTransactionTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel15.setText("Trạng thái thanh toán");
 
         jLabel16.setText("Ngày tạo");
@@ -2170,6 +2166,12 @@ public class ManagerMainForm extends javax.swing.JFrame {
         PendingRadioButton.setText("Chưa thanh toán");
 
         transactionSpinner.setModel(new javax.swing.SpinnerDateModel());
+
+        CardorCashbuttonGroup.add(CardRadioButton);
+        CardRadioButton.setText("Thẻ");
+
+        CardorCashbuttonGroup.add(CashRadioButton);
+        CashRadioButton.setText("Tiền mặt");
 
         javax.swing.GroupLayout addTransactionDialogLayout = new javax.swing.GroupLayout(addTransactionDialog.getContentPane());
         addTransactionDialog.getContentPane().setLayout(addTransactionDialogLayout);
@@ -2188,16 +2190,18 @@ public class ManagerMainForm extends javax.swing.JFrame {
                             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(addTransactionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addTransactionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(typeTransactionTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(CustomerIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CustomerIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tracsactionByOrderIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(contentTransactionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(addTransactionDialogLayout.createSequentialGroup()
                                 .addComponent(PaidRadioButton)
                                 .addGap(27, 27, 27)
                                 .addComponent(PendingRadioButton))
-                            .addComponent(transactionSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(transactionSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(addTransactionDialogLayout.createSequentialGroup()
+                                .addComponent(CardRadioButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(CashRadioButton)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTransactionDialogLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2226,8 +2230,9 @@ public class ManagerMainForm extends javax.swing.JFrame {
                     .addComponent(nameLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addTransactionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typeTransactionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salaryLabel9))
+                    .addComponent(salaryLabel9)
+                    .addComponent(CardRadioButton)
+                    .addComponent(CashRadioButton))
                 .addGap(13, 13, 13)
                 .addGroup(addTransactionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
@@ -2241,7 +2246,7 @@ public class ManagerMainForm extends javax.swing.JFrame {
                 .addGroup(addTransactionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel9)
                     .addComponent(tracsactionByOrderIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(addTransactionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contentTransactionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
@@ -4150,7 +4155,12 @@ public class ManagerMainForm extends javax.swing.JFrame {
     private void submitButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButton3ActionPerformed
 
         transaction.setCustomerID(Integer.valueOf(CustomerIDTextfield.getText()));
-        transaction.setType(typeTransactionTextField.getText());
+        if (CardRadioButton.isSelected()) {
+            transaction.setType("Card");
+        }else if (CashRadioButton.isSelected()) {
+            transaction.setType("Cash");
+        }
+        
         
         String statusTransaction = "";
         if (PaidRadioButton.isSelected()) {
@@ -4183,10 +4193,6 @@ public class ManagerMainForm extends javax.swing.JFrame {
     private void CustomerIDTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerIDTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CustomerIDTextfieldActionPerformed
-
-    private void typeTransactionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeTransactionTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_typeTransactionTextFieldActionPerformed
 
     private void deleteTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteTransactionButtonActionPerformed
         
@@ -4440,6 +4446,9 @@ public class ManagerMainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CapicityTextField;
+    private javax.swing.JRadioButton CardRadioButton;
+    private javax.swing.ButtonGroup CardorCashbuttonGroup;
+    private javax.swing.JRadioButton CashRadioButton;
     private javax.swing.JPanel CategoryPanel;
     private javax.swing.JComboBox<String> CustomerIDComboBox;
     private javax.swing.JTextField CustomerIDTextfield;
@@ -4645,7 +4654,6 @@ public class ManagerMainForm extends javax.swing.JFrame {
     private javax.swing.JTextField tracsactionByOrderIDTextField;
     private javax.swing.JSpinner transactionSpinner;
     private javax.swing.JTable transactionTable;
-    private javax.swing.JTextField typeTransactionTextField;
     private javax.swing.JButton updateAccountButton;
     private javax.swing.JDialog updateAccountDialog;
     private javax.swing.JButton updateButton;

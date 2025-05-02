@@ -1957,10 +1957,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="typeTransactionTextField" alignment="1" min="-2" pref="271" max="-2" attributes="0"/>
-                                  <Component id="CustomerIDTextfield" alignment="0" min="-2" pref="271" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="CustomerIDTextfield" alignment="0" min="-2" pref="271" max="-2" attributes="0"/>
                               <Component id="tracsactionByOrderIDTextField" alignment="0" min="-2" pref="271" max="-2" attributes="0"/>
                               <Component id="contentTransactionTextField" alignment="0" min="-2" pref="271" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -1969,6 +1966,11 @@
                                   <Component id="PendingRadioButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="transactionSpinner" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="CardRadioButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="CashRadioButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
@@ -2008,8 +2010,9 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="typeTransactionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="salaryLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="CardRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="CashRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -2027,7 +2030,7 @@
                       <Component id="nameLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tracsactionByOrderIDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="8" max="32767" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="contentTransactionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2079,11 +2082,6 @@
             <Property name="text" type="java.lang.String" value="Lo&#x1ea1;i thanh to&#xe1;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="typeTransactionTextField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeTransactionTextFieldActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i thanh to&#xe1;n"/>
@@ -2129,6 +2127,22 @@
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="now" stepSize="5" type="date"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="CardRadioButton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="CardorCashbuttonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Th&#x1ebb;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="CashRadioButton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="CardorCashbuttonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ti&#x1ec1;n m&#x1eb7;t"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -2407,6 +2421,8 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.ButtonGroup" name="tablebuttonGroup">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="CardorCashbuttonGroup">
     </Component>
   </NonVisualComponents>
   <Properties>
