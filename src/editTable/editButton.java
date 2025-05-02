@@ -37,4 +37,12 @@ public class editButton {
         button.setBorder(BorderFactory.createEmptyBorder(8, 16, 8, 16));
         button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
+    public static void styleAsRefresh(JButton button) {
+        button.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        button.setBackground(new Color(23, 162, 184)); // Màu xanh lam nhẹ (refresh color)
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createEmptyBorder(8, 16, 8, 16));
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }
 }

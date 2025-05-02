@@ -117,8 +117,7 @@ public class ManagerMainForm extends javax.swing.JFrame {
         TableStyleUtil.applyTableStyle(accountTable);
         TableStyleUtil.applyTableStyle(staffTable);
         TableStyleUtil.applyTableStyle(tableTop_Table);
-        TableStyleUtil.applyTableStyle(categoryTable);
-        TableStyleUtil.applyTableStyle(itemTable);
+        
         TableStyleUtil.applyTableStyle(transactionTable);
         TableStyleUtil.applyTableStyle(orderTable);
         
@@ -155,6 +154,18 @@ public class ManagerMainForm extends javax.swing.JFrame {
         editButton.styleAsSecondary(updateCategoryButton);
         editButton.styleAsSecondary(updateItemButton);
         editButton.styleAsSecondary(submitPaymentOrderButton);
+        
+        //////UPDATE Button Edit
+        ////////////////////////////////////////
+        editButton.styleAsRefresh(refreshCustomerButton);
+        editButton.styleAsRefresh(refreshAccountButton);
+        editButton.styleAsRefresh(refreshButton);
+        editButton.styleAsRefresh(refreshTableButton);
+        editButton.styleAsRefresh(categoryRefreshButton);
+        editButton.styleAsRefresh(refreshButton11);
+        editButton.styleAsRefresh(refreshTransactionButton);
+        editButton.styleAsRefresh(refreshOrderButton);
+        
         
         //Table Staff
         staffBLL = new StaffBLL();
@@ -544,22 +555,7 @@ public class ManagerMainForm extends javax.swing.JFrame {
         }
     }
         
-    private void customizeTabbedPane() {
-        // Đổi font và màu chữ
-        managerTablePane.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        managerTablePane.setForeground(Color.DARK_GRAY);
-
-        // Đổi màu nền của toàn bộ tab pane
-        managerTablePane.setBackground(new Color(240, 240, 240));
-
-        // Tùy chỉnh màu tab đang chọn
-        UIManager.put("TabbedPane.selected", new Color(214, 234, 248));
-        UIManager.put("TabbedPane.tabInsets", new Insets(10, 20, 10, 20));
-
-        // Padding giữa tab và content
-        managerTablePane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-    }
+    
 
 
 
